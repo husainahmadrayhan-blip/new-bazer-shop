@@ -2,7 +2,7 @@ const $=x=>document.getElementById(x);
 let ps=[],allProducts=[],cart=JSON.parse(localStorage.getItem('nb_cart')||'{}'),cat='সব পণ্য';
 const cats=['ইলেকট্রনিক','মোবাইল আইটেম','উপহার সামগ্রী','পোশাক'];
 const catMeta={
- 'ইলেকট্রনিক':{icon:'🔌',desc:'চকেট, সুইচ, বৈদ্যুতিক তার, LED বাল্ব ও সার্কিট ব্রেকার',img:'/images/category-electronics.jpg',tone:'blue'},
+ 'ইলেকট্রনিক':{icon:'🔌',desc:'চকেট, সুইচ, বৈদ্যুতিক তার, LED বাল্ব ও সার্কিট ব্রেকার এবং অন্যান্য ইলেকট্রিক পণ্য',img:'/images/category-electronics.jpg',tone:'blue'},
  'মোবাইল আইটেম':{icon:'📱',desc:'মোবাইল, কভার, চার্জার ও অ্যাক্সেসরিজ',img:'/images/category-mobile.jpg',tone:'green'},
  'উপহার সামগ্রী':{icon:'🎁',desc:'গিফট বক্স, খেলনা ও বিশেষ উপহার',img:'/images/category-gifts.jpg',tone:'pink'},
  'পোশাক':{icon:'👕',desc:'শার্ট, টি-শার্ট, প্যান্ট ও অন্যান্য পোশাক',img:'/images/category-clothing.jpg',tone:'orange'}

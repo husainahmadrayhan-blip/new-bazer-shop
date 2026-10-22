@@ -180,3 +180,70 @@ nav#cats .category-card .category-image.permanent-category-image .category-shade
     min-height: 105px !important;
   }
 }
+@media(max-width:650px) {
+  .site-header {
+    grid-template-columns: minmax(0, 1fr) auto;
+    column-gap: 6px;
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+  .logo {
+    min-width: 0;
+    gap: 6px;
+    font-size: clamp(15px, 4.6vw, 19px);
+  }
+  .brand-name {
+    min-width: 0;
+  }
+  .header-actions {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(28px, 1fr));
+    gap: 0;
+    min-width: 0;
+  }
+  .head-action {
+    min-width: 0;
+    padding: 3px 2px;
+    white-space: normal;
+    line-height: 1.2;
+  }
+  .account-action {
+    display: flex;
+  }
+  #cats .category-card {
+    height: auto;
+    min-width: 0;
+    overflow: visible !important;
+  }
+  #cats .category-card .category-copy {
+    width: 100%;
+    min-width: 0;
+    flex: 1 0 auto;
+    gap: 7px;
+    padding: 10px 9px 12px;
+  }
+  #cats .category-card .category-copy small {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    min-height: 0;
+    height: auto;
+    overflow: visible;
+    overflow-wrap: anywhere;
+    white-space: normal;
+    text-overflow: clip;
+    line-height: 1.55;
+  }
+  #cats .category-card .cat-cta {
+    width: 100%;
+    min-width: 0;
+    gap: 6px;
+    padding: 7px 9px;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    line-height: 1.45;
+  }
+  #cats .category-card .cat-cta i {
+    flex: 0 0 auto;
+  }
+}
