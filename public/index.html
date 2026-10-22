@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f7fbff">
+<title>Notun Bazar — স্মার্ট কেনাকাটা</title><link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header class="site-header">
+  <a class="logo" href="/" aria-label="Notun Bazar হোম"><span class="brand-bag">🛍</span><span class="brand-name">Notun <em>Bazar</em><small>Best Quality · Best Price · Your Choice</small></span></a>
+  <label class="searchbox"><input id="search" placeholder="পণ্য খুঁজুন..." aria-label="পণ্য খুঁজুন"><button type="button" onclick="document.getElementById('search').focus()" aria-label="খুঁজুন">⌕</button></label>
+  <div class="header-actions"><a href="/" class="head-action"><b>⌂</b><span>হোম</span></a><button type="button" class="head-action" onclick="document.getElementById('category-section').scrollIntoView({behavior:'smooth'})"><b>▦</b><span>ক্যাটাগরি</span></button><button type="button" class="head-action" onclick="location.href='/checkout'"><b class="cart-symbol">🛒<i id="headCartCount">0</i></b><span>কার্ট</span></button><button type="button" class="head-action account-action" onclick="openAdminLogin()"><b>♙</b><span>অ্যাডমিন</span></button></div>
+</header>
+<main class="home-main">
+  <div class="promo-strip"><span>🚀</span> সেরা দামে সেরা পণ্য — এখনই অর্ডার করুন! <span>✨</span></div>
+  <section id="category-section" class="category-section">
+    <div class="section-heading"><div><small>স্বাগতম</small><h1>আপনার পছন্দের ক্যাটাগরি নির্বাচন করুন</h1><p>আমাদের সেরা সব পণ্য এক জায়গায়, আপনার জন্য!</p></div><span class="heading-spark">✦</span></div>
+    <nav id="cats" aria-label="পণ্যের ক্যাটাগরি"></nav>
+  </section>
+  <section class="products-section" id="products-section">
+    <div class="products-heading"><div><span class="eyebrow" id="productEyebrow">আপনার জন্য বাছাই করা</span><h2 id="productsTitle">জনপ্রিয় পণ্য</h2><p id="productsSubtitle">পছন্দের পণ্য বেছে নিন, কার্টে যোগ করুন</p></div><span id="resultCount" class="result-count"></span></div>
+    <div class="product-tools"><div id="categoryChips" class="category-chips"></div><button class="clear-filter" type="button" onclick="selectCategory('সব পণ্য')">সব পণ্য দেখুন ↗</button></div>
+    <div id="products" class="grid"></div>
+  </section>
+  <section class="service-strip"><div><b>🛡️</b><span>নিরাপদ লেনদেন</span></div><div><b>🚚</b><span>সারা বাংলাদেশে ডেলিভারি</span></div><div><b>🎧</b><span>২৪/৭ সাপোর্ট</span></div><div><b>↩</b><span>সহজ রিটার্ন</span></div></section>
+</main>
+<aside id="cart" class="cart hidden"><div class="cart-summary"><b id="carttext">0টি পণ্য · মোট ৳0</b><small>আপনার পছন্দের পণ্য কার্টে আছে</small></div><div class="cart-actions"><button class="cart-list-btn" id="cartlistbtn" onclick="location.href='/checkout'">কার্ট লিস্ট দেখুন (0)</button><button class="cart-order-btn" onclick="location.href='/checkout'">অর্ডার করুন →</button></div></aside>
+<div id="adminModal" class="modal hidden"><form id="adminLoginForm" class="box"><button type="button" class="x" onclick="document.getElementById('adminModal').classList.add('hidden')">×</button><h2>অ্যাডমিন লগইন</h2><label>Username<input name="username" value="admin" required></label><label>Password<input name="password" type="password" required></label><button class="primary">লগইন</button><p id="adminLoginMsg" role="status"></p></form></div>
+<footer><a class="footer-brand" href="/">Notun <em>Bazar</em></a><p>স্মার্ট কেনাকাটা, স্মার্ট জীবন</p><small>© Notun Bazar · সব অধিকার সংরক্ষিত</small></footer>
+<script src="/app.js"></script>
+</body></html>
