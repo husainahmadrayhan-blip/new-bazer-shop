@@ -180,6 +180,28 @@ nav#cats .category-card .category-image.permanent-category-image .category-shade
     min-height: 105px !important;
   }
 }
+.category-copy .category-description {
+  min-height: 18px;
+  color: #34547d;
+  font-size: 12px;
+}
+.category-card {
+  cursor: pointer;
+}
+@media(min-width:651px) {
+  .category-copy .category-description {
+    pointer-events: none;
+  }
+  .category-copy .category-description summary {
+    list-style: none;
+  }
+  .category-copy .category-description summary::-webkit-details-marker {
+    display: none;
+  }
+  .category-copy .category-description-full {
+    display: none;
+  }
+}
 @media(max-width:650px) {
   .site-header {
     grid-template-columns: minmax(0, 1fr) auto;
@@ -215,28 +237,60 @@ nav#cats .category-card .category-image.permanent-category-image .category-shade
     min-width: 0;
     overflow: visible !important;
   }
+  #cats {
+    align-items: stretch;
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+  }
+  nav#cats .category-card .category-image.permanent-category-image {
+    aspect-ratio: 4 / 3;
+    height: auto !important;
+    min-height: 0 !important;
+  }
+  nav#cats .category-card .category-image.permanent-category-image > img {
+    object-fit: contain !important;
+    background: #e8eff9;
+  }
   #cats .category-card .category-copy {
     width: 100%;
     min-width: 0;
-    flex: 1 0 auto;
+    flex: 1;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
     gap: 7px;
     padding: 10px 9px 12px;
   }
-  #cats .category-card .category-copy small {
-    display: block;
+  #cats .category-card .category-copy > b {
+    min-height: 2.4em;
+  }
+  #cats .category-card .category-description {
     width: 100%;
     min-width: 0;
-    min-height: 0;
-    height: auto;
-    overflow: visible;
+    min-height: 4.5em;
+    color: #34547d;
+    font-size: 12px;
+    line-height: 1.5;
     overflow-wrap: anywhere;
-    white-space: normal;
-    text-overflow: clip;
+  }
+  #cats .category-card .category-description summary {
+    display: -webkit-box;
+    overflow: hidden;
+    cursor: pointer;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+  }
+  #cats .category-card .category-description-full {
+    display: none;
+  }
+  #cats .category-card .category-description[open] .category-description-full {
+    display: block;
+    margin-top: 4px;
     line-height: 1.55;
   }
   #cats .category-card .cat-cta {
     width: 100%;
     min-width: 0;
+    margin-top: auto;
     gap: 6px;
     padding: 7px 9px;
     white-space: normal;

@@ -19,10 +19,10 @@ function renderCats(){
    const items=allProducts.filter(p=>normalizeCategory(p.category)===c);
    const meta=catMeta[c];
    // Permanent category artwork is independent of product uploads.
-   return `<button type="button" class="category-card ${c===cat?'active':''} tone-${meta.tone}" style="--delay:${i*80}ms" data-category="${esc(c)}" aria-label="${esc(c)} ক্যাটাগরির ${items.length}টি পণ্য দেখুন">
+   return `<div class="category-card ${c===cat?'active':''} tone-${meta.tone}" style="--delay:${i*80}ms" data-category="${esc(c)}" role="group" aria-label="${esc(c)} ক্যাটাগরির ${items.length}টি পণ্য দেখুন">
      <span class="category-image collage permanent-category-image"><img src="${meta.img}" alt="${esc(c)} ক্যাটাগরির ছবি" loading="eager"><span class="category-count">${items.length}টি পণ্য</span></span>
-     <span class="category-copy"><b>${esc(c)}</b><small>${esc(meta.desc)}</small><span class="cat-cta">দেখুন সব পণ্য <i>→</i></span></span>
-   </button>`;
+     <span class="category-copy"><b>${esc(c)}</b><details class="category-description"><summary>${esc(meta.desc)}</summary><span class="category-description-full">${esc(meta.desc)}</span></details><button type="button" class="cat-cta" data-category="${esc(c)}">দেখুন সব পণ্য <i>→</i></button></span>
+   </div>`;
  }).join('');
  renderChips();
 }
@@ -38,7 +38,7 @@ function renderProducts(){
 function view(id){fetch('/api/track/product/'+encodeURIComponent(id),{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({visitorId:visitor()})}).catch(()=>{})}
 function add(id){cart[id]=(cart[id]||0)+1;localStorage.setItem('nb_cart',JSON.stringify(cart));cartUI();const b=$('cart');b.classList.remove('cart-bump');void b.offsetWidth;b.classList.add('cart-bump')}
 function cartUI(){let n=0,t=0;Object.entries(cart).forEach(([id,q])=>{const p=allProducts.find(x=>String(x.id)===String(id));if(p){n+=Number(q);t+=Number(q)*Number(p.price)}});$('cart').classList.toggle('hidden',!n);$('carttext').textContent=`${n}টি পণ্য · মোট ${money(t)}`;$('cartlistbtn').textContent=`কার্ট লিস্ট দেখুন (${n})`;$('headCartCount').textContent=n}
-document.addEventListener('click',e=>{const target=e.target.closest('[data-category]');if(target){e.preventDefault();selectCategory(target.dataset.category);}});
+document.addEventListener('click',e=>{if(e.target.closest('.category-description'))return;const target=e.target.closest('[data-category]');if(target){e.preventDefault();selectCategory(target.dataset.category);}});
 $('search').addEventListener('input',renderProducts);track();load();
 function openAdminLogin(){$('adminModal').classList.remove('hidden')}
 $('adminLoginForm').onsubmit=async e=>{e.preventDefault();const f=new FormData(e.target),msg=$('adminLoginMsg');msg.textContent='লগইন হচ্ছে…';try{const r=await fetch('/api/admin/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(Object.fromEntries(f.entries()))});const d=await r.json();if(!r.ok)throw Error(d.error||'লগইন ব্যর্থ');localStorage.setItem('nb_admin_token',d.token);location.href='/admin-panel'}catch(err){msg.textContent=err.message}};
